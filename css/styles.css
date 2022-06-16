@@ -5,6 +5,7 @@
   --address-footer-color: rgba(255, 255, 255, 0.6);
   --title-bg-color: #ffffff;
   --logo-color: #afb1b8;
+  --function-cubic: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 p,
@@ -101,6 +102,8 @@ body {
   padding-top: 32px;
   padding-bottom: 32px;
 
+  transition: color 250ms var(--function-cubic);
+
   color: var(--primary-tex-color);
   font-weight: 500;
   font-size: 14px;
@@ -168,12 +171,12 @@ body {
   margin-right: auto;
   padding-top: 200px;
   padding-bottom: 200px;
+  max-width: 1600px;
 
   background-color: #c4c4c4;
   background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
     url(../images/banner-hero.jpg);
   background-repeat: no-repeat;
-  background-size: auto;
   background-position: center;
   text-align: center;
 }
@@ -197,12 +200,14 @@ body {
   height: 50px;
   padding: 10px 32px;
 
+  transition: background-color 250ms var(--function-cubic);
   font-family: inherit;
   cursor: pointer;
   font-weight: 700;
   font-size: 16px;
   line-height: 1.88;
   letter-spacing: 0.06em;
+
   color: var(--title-bg-color);
   background-color: var(--accent-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
@@ -382,9 +387,10 @@ body {
   justify-content: center;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+
   background-color: var(--title-bg-color);
   color: var(--logo-color);
+  border-radius: 50%;
 }
 
 .teams-soc-icon {
@@ -548,6 +554,75 @@ body {
 .social-link:hover,
 .social-link:focus {
   background-color: var(--accent-color);
+}
+
+/* -------modal---------- */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.2);
+  transition: opacity 250ms var(--function-cubic), visibility 250ms var(--function-cubic);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1.25);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+
+  width: 528px;
+  min-height: 581px;
+
+  background: var(--title-bg-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  transition: transform 250ms var(--function-cubic);
+}
+
+.modal-close-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 8px;
+  top: 8px;
+  padding: 0;
+
+  width: 30px;
+  height: 30px;
+  transition: color 250ms var(--function-cubic);
+
+  cursor: pointer;
+  background-color: var(--title-bg-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  color: var(--accent-color);
+}
+
+.modal-close-icon {
+  fill: currentColor;
 }
 
 /* ------portfolio------- */
