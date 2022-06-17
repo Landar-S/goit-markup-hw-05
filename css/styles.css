@@ -685,6 +685,9 @@ body {
   display: block;
   font-family: inherit;
   cursor: pointer;
+  transition: background-color 250ms var(--function-cubic), color 250ms var(--function-cubic),
+    box-shadow 250ms var(--function-cubic);
+
   font-weight: 500;
   font-size: 16px;
   line-height: 1.62;
@@ -740,6 +743,7 @@ body {
 
 .portfolio-link {
   display: block;
+  transition: box-shadow 250ms var(--function-cubic);
 }
 
 .portfolio-link:hover,
@@ -768,4 +772,42 @@ body {
   font-size: 16px;
   line-height: 1.88;
   letter-spacing: 0.03em;
+}
+
+.portfolio-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  transform: translateY(100%);
+  transition: opacity 250ms var(--function-cubic), transform 250ms var(--function-cubic);
+  background-color: rgba(33, 150, 243, 0.9);
+  opacity: 0;
+}
+
+.portfolio-link:hover .portfolio-overlay,
+.portfolio-link:focus .portfolio-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-sub-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 63px 24px;
+  transition: opacity 250ms var(--function-cubic);
+
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: var(--title-bg-color);
+  overflow: auto;
 }
